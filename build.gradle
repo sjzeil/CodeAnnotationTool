@@ -1,0 +1,26 @@
+plugins {
+   id 'java'
+   id 'application'
+   id("org.xbib.gradle.plugin.jflex") version "3.0.2"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+}
+
+application { // Allows  gradle run --args="command line arguments"
+    mainClass = 'edu.odu.cs.codeAnnotation.Code2HTML'
+}
+
+run {
+    args = ['src/test/data/test.cpp', 'build/test.cpp.html']
+}
+
+test { 
+    ignoreFailures = true
+    useJUnitPlatform()
+}
